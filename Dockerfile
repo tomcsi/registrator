@@ -1,8 +1,8 @@
-FROM gliderlabs/alpine:3.2
+FROM gliderlabs/alpine:edge
 ENTRYPOINT ["/bin/registrator"]
 
 COPY . /go/src/github.com/gliderlabs/registrator
-RUN apk-install -t build-deps go git mercurial \
+RUN apk --no-cache add -t build-deps go git mercurial \
 	&& cd /go/src/github.com/gliderlabs/registrator \
 	&& export GOPATH=/go \
 	&& go get \
